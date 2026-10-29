@@ -4,21 +4,24 @@
   const holdTime = 6500;
   const alphabet = " abcdefghijklmnopqrstuvwxyz0123456789.,&/-'";
   // Edit these sentences to change the rotation; line wrapping is automatic.
+  // The single image slide follows the golf sentence.
   const messages = [
     "I'm a software engineer at Anduril, working on C-UAS under Air Defense.",
     "I'm a part-time barista working on my latte art.",
     'I love travelling, especially to Japan.',
     'I once was lost, but now I am found.',
     'Working on my golf swing, currently slicing very badly.',
+    { type: 'image', alt: 'Sad Pepe meme' },
     'The Three-Body Problem is my favorite book series.',
   ];
   const container = document.querySelector('.description');
   const board = container.querySelector('.splitflap');
   const copy = container.querySelector('.description-copy');
+  const meme = board.querySelector('.board-meme-frame');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const timers = new Set();
   let currentIndex = 0;
-  let layouts = messages.map(message => [message]);
+  let layouts = messages.map(message => typeof message === 'string' ? [message] : []);
 
   function characters(index) {
     return Array.from({ length: rows }, (_, row) =>
@@ -81,7 +84,7 @@
       });
       return lines;
     }
-    const text = messages;
+    const text = messages.map(message => typeof message === 'string' ? message : '');
     let size = preferredSize;
     layouts = text.map(message => wrap(message, size));
     while (layouts.some(lines => lines.length > rows) && size > 12) {
@@ -124,7 +127,11 @@
 
   function settle() {
     characters(currentIndex).forEach((character, index) => paint(tiles[index], character));
-    copy.textContent = messages[currentIndex];
+    const message = messages[currentIndex];
+    const isImage = typeof message !== 'string';
+    copy.textContent = isImage ? message.alt : message;
+    meme.hidden = !isImage;
+    board.classList.toggle('is-image', isImage);
     readingLines.forEach((line, row) => { line.textContent = layouts[currentIndex][row] || '\u00a0'; });
     board.classList.remove('is-changing');
   }
@@ -153,6 +160,17 @@
     // Complete an interrupted transition before starting another one.
     settle();
     currentIndex = index;
+    meme.classList.remove('is-entering');
+    if (typeof messages[index] !== 'string') {
+      settle();
+      if (animate && !reducedMotion.matches && !document.hidden) {
+        meme.classList.add('is-entering');
+      }
+      waitForNext();
+      return;
+    }
+    meme.hidden = true;
+    board.classList.remove('is-image');
     sizeLetters();
     if (!animate || reducedMotion.matches || document.hidden) {
       settle();

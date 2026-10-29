@@ -12,7 +12,7 @@ Open http://localhost:8000. Stop the server with Ctrl+C.
 
 Content: `index.html`. Styling: `css/style.css`. Split-flap messages and timing: `js/splitflap.js`. Classic serif typography uses a locally stored EB Garamond font with its license in `files/fonts/`. The palette is off-white and black with restrained green accents.
 
-Keep the overview brief. Experience entries contain company logos, employment dates, titles, and organizations. A small photographic head-and-shoulders cutout sits above the overview label. No links, contact buttons, Miscellaneous section, or edge navigation. The split-flap display cycles through short personal sentences, without visible controls. Reduced-motion preferences show a static message. Playback stops while the tab is hidden.
+Keep the overview brief. Experience entries contain company logos, employment dates, titles, and organizations. A small photographic head-and-shoulders cutout sits above the overview label. No links, contact buttons, Miscellaneous section, or edge navigation. The split-flap display cycles through short personal sentences and one meme PNG after the golf sentence, without visible controls. Reduced-motion preferences show a static message. Playback stops while the tab is hidden.
 
 The photographic head-and-shoulders cutout was extracted with the built-in image tool from the user-supplied photo; its extraction prompt is in `files/kevin-bust-prompt.txt`.
 

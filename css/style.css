@@ -31,6 +31,8 @@ p, h1, h2, h3 { margin: 0; }
   padding: 48px 56px;
 }
 .composition {
+  isolation: isolate;
+  background: var(--background);
   width: min(100%, 1000px);
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -81,6 +83,7 @@ h1 {
   position: relative;
   display: block;
   width: 69px;
+  background: var(--background);
   aspect-ratio: 69 / 44;
   overflow: hidden;
 }
@@ -186,6 +189,7 @@ h3 {
   width: calc(100% + 24px);
 }
 .splitflap {
+  position: relative;
   --flap-height: 27px;
   --board-font-size: 18px;
   display: flex;
@@ -309,3 +313,21 @@ h3 {
   .page-reveal { display: none !important; }
   .intro-pending .composition { opacity: 1; transform: none; animation: none; }
 }
+
+/* One image beat shares the existing three-row area, so the layout stays still. */
+.board-meme-frame {
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: auto;
+  height: calc(var(--flap-height) * 2);
+  aspect-ratio: 222 / 165;
+  max-width: 100%;
+  background: var(--background);
+  isolation: isolate;
+}
+.board-meme { display: block; width: 100%; height: 100%; object-fit: contain; mix-blend-mode: multiply; }
+.is-image .flap-row { visibility: hidden; }
+.board-meme-frame.is-entering { transform-origin: center; animation: meme-turn 320ms cubic-bezier(.2,.65,.3,1) both; }
+@keyframes meme-turn { from { opacity: 0; transform: perspective(400px) rotateX(-65deg); } to { opacity: 1; transform: perspective(400px) rotateX(0); } }
+@media (prefers-reduced-motion: reduce) { .board-meme-frame.is-entering { animation: none; } }
