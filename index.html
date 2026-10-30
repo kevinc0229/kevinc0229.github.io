@@ -8,9 +8,10 @@
   <title>Kevin Cao — Software Engineer</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%23f4f2eb'/%3E%3Ctext x='32' y='42' text-anchor='middle' fill='%2320211e' font-family='Georgia' font-size='27'%3EKC%3C/text%3E%3C/svg%3E">
   <link rel="preload" href="files/fonts/EBGaramond.ttf" as="font" type="font/ttf" crossorigin>
-  <link rel="stylesheet" href="css/style.css?v=experience-dash">
+  <link rel="stylesheet" href="css/style.css?v=coffee-focus-10">
   <script src="js/intro.js"></script>
   <script src="js/splitflap.js" defer></script>
+  <script src="js/coffee.js?v=cup-expand-11" defer></script>
 </head>
 <body>
   <div class="page-reveal" aria-hidden="true"><span class="reveal-line"></span></div>
@@ -26,6 +27,15 @@
             <span class="board-meme-frame" hidden><img class="board-meme" src="img/portfolio/pepe-sadge.png" alt="Sad Pepe meme" width="222" height="165"></span>
           </div>
         </div>
+        <button class="coffee-invite" type="button" aria-haspopup="dialog" aria-controls="coffee-modal" hidden>
+          <svg class="coffee-cup" width="42" height="46" viewBox="0 0 48 52" fill="none" aria-hidden="true">
+            <path class="coffee-steam steam-one" d="M17 21c-4-3 4-5 0-8"/>
+            <path class="coffee-steam steam-two" d="M26 21c-4-3 4-5 0-8"/>
+            <path d="M10 22h25v13a10 10 0 0 1-10 10h-5a10 10 0 0 1-10-10V22Z" fill="currentColor" fill-opacity=".06"/>
+            <path d="M10 22h25v13a10 10 0 0 1-10 10h-5a10 10 0 0 1-10-10V22ZM35 24h3a6 6 0 0 1 0 12h-3"/>
+          </svg>
+          <span>my best pours</span>
+        </button>
       </section>
       <section id="experience" class="experience" aria-labelledby="experience-title">
         <h2 id="experience-title" class="eyebrow">Experience</h2>
@@ -54,5 +64,9 @@
       </section>
     </div>
   </main>
+  <dialog id="coffee-modal" class="coffee-modal" aria-labelledby="coffee-title">
+    <h2 id="coffee-title" class="visually-hidden">Your coffee break, courtesy of Rick.</h2>
+    <div class="coffee-media"></div>
+  </dialog>
 </body>
 </html>
