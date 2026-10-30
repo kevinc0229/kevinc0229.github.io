@@ -65,8 +65,8 @@ h1 {
   font: 400 18px/1.65 var(--serif);
   margin-top: 24px;
 }
-.overview > .eyebrow { display: flex; align-items: center; gap: 11px; }
-.overview > .eyebrow::before { content: ""; width: 22px; height: 1px; background: var(--accent); }
+.overview > .eyebrow, .experience > .eyebrow { display: flex; align-items: center; gap: 11px; }
+.overview > .eyebrow::before, .experience > .eyebrow::before { content: ""; width: 22px; height: 1px; background: var(--accent); }
 .experience > h2 { margin-bottom: 15px; }
 .experience-list { list-style: none; margin: 0; padding: 0; }
 .experience-row {
@@ -80,6 +80,7 @@ h1 {
 .experience-row:last-child { border-bottom: 0; padding-bottom: 0; }
 /* Normalize visible marks rather than the differently padded source canvases. */
 .company-logo {
+  cursor: default;
   position: relative;
   display: block;
   width: 69px;
@@ -88,6 +89,7 @@ h1 {
   overflow: hidden;
 }
 .company-logo img {
+  cursor: default;
   position: absolute;
   display: block;
   left: 50%;
